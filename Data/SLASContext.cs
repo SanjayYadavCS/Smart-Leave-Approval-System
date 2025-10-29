@@ -1,17 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
-
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
 using SLAS.Models.Entities;
 
 namespace SLAS.Data;
 
-public class SLASContext : DbContext
+public class SLASContext : IdentityDbContext<ApplicationUser,ApplicationRole,int>
 {
     public SLASContext(DbContextOptions options) : base(options)
     {
     }
 
-
-
+    protected SLASContext()
+    {
+    }
 
     public DbSet<Leave> Leaves { get; set; } = default!;
     public DbSet<LeaveAuditLog> LeaveAuditLogs { get; set; } = default!;

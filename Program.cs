@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SLAS.Data;
+using SLAS.Models.Entities;
 
 namespace SLAS
 {
@@ -13,6 +15,8 @@ namespace SLAS
             //    options.UseSqlServer(builder.Configuration.GetConnectionString("SLASContext") ?? throw new InvalidOperationException("Connection string 'SLASContext' not found.")));
 
             builder.Services.AddDbContext<SLASContext>(options=> options.UseSqlServer(builder.Configuration.GetConnectionString("SLASContext") ?? throw new InvalidOperationException("Connection string 'SLASContext' not found.")));
+
+            builder.Services.AddIdentity<ApplicationUser, ApplicationRole>().AddEntityFrameworkStores<SLASContext>().AddDefaultTokenProviders();
 
             // Add services to the container.
 
