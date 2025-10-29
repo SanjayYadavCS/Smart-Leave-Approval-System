@@ -1,0 +1,6 @@
+@SLAS_HostAddress = http://localhost:5293
+
+GET {{SLAS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
